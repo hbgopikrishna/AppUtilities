@@ -205,7 +205,178 @@ To check whether two dates are belongs to same year or not.
     ) // This will check both dates are in same year and will return true or false
 ```
 
+# FragmentUtils
 
+  To Replaces existing fragment with a [Fragment], that gets instantiated from `clazz` with optional `fragmentBundle` attached.
+
+```kotlin
+    FragmentUtils.replace(
+        activity: AppCompatActivity, // Hosting activity
+        @IdRes frameResId: Int, // Layout id where fragment should be placed
+        clazz: Class<*>, // Fragment's class that should be instantiated
+        fragmentBundle: Bundle?, // This bundle gets supplied to the fragment
+        addToBackStack: Boolean, // If true transaction would be added to back stack.
+        tag: String? // Fragment transaction's tag
+    )
+```
+
+ To Replace existing fragment with `fragment`.
+     
+ ```kotlin
+    FragmentUtils.replace(
+        activity: AppCompatActivity, // Hosting activity
+        @IdRes frameResId: Int, // Layout id where fragment should be placed
+        fragment: Fragment?, // Fragment instance
+        addToBackStack: Boolean, // If true transaction would be added to back stack.
+        tag: String? // Fragment transaction's tag
+    )
+ ```
+ 
+ To Replace existing fragment with `fragment`applying animation.
+     
+ ```kotlin
+    FragmentUtils.replaceWithAnim(
+        activity: AppCompatActivity,
+        @IdRes frameResId: Int,
+        fragment: Fragment?,
+        addToBackStack: Boolean,
+        tag: String?,
+        @AnimRes animIn: Int, // Animation In 
+        @AnimRes animOut: Int // Animation Out
+    )
+ ```
+ 
+   To Replaces existing fragment with a [Fragment], that gets instantiated from `clazz` with optional `fragmentBundle` attached.
+     
+ ```kotlin
+    FragmentUtils.add(
+        activity: AppCompatActivity, // Hosting activity
+        @IdRes frameResId: Int, // Layout id where fragment should be placed
+        clazz: Class<*>, // Fragment's class that should be instantiated
+        fragmentBundle: Bundle?, // This bundle gets supplied to the fragment
+        addToBackStack: Boolean, // If true transaction would be added to back stack.
+        tag: String? // Fragment transaction's tag
+    )
+ ```
+ 
+ Pops off the last fragment in the provided activity's stack.
+     
+ ```kotlin
+    FragmentUtils.pop(activity: AppCompatActivity)
+ ```
+ 
+ Add `fragment` as a child to `rootFragment`.
+     
+ ```kotlin
+    FragmentUtils.addChild(
+        rootFragment: Fragment,
+        @IdRes frameResId: Int,
+        fragment: Fragment?,
+        addToBackStack: Boolean,
+        tag: String?
+    )
+ ```
+ 
+ Replace `fragment` as a child to `rootFragment`.
+     
+ ```kotlin
+    FragmentUtils.replaceChild(
+        rootFragment: Fragment,
+        @IdRes frameResId: Int,
+        fragment: Fragment?,
+        addToBackStack: Boolean,
+        tag: String?
+    )
+ ```
+ 
+ Searches for child fragment in `fragment` by provided `tag`.
+     
+ ```kotlin
+    FragmentUtils.findChildByTag(
+        fragment: Fragment,
+        tag: String
+    ) // It will return the fragment 
+ ```
+ 
+ Searches for fragment in [FragmentManager] by provided `tag`.
+     
+ ```kotlin
+    FragmentUtils.findByTag(
+        activity: AppCompatActivity,
+        tag: String
+    ) // It will return the fragment 
+ ```
+ 
+ Searches for fragment in [FragmentManager] by provided `id`.
+     
+ ```kotlin
+    FragmentUtils.findById(
+        activity: AppCompatActivity,
+        @IdRes id: Int
+    ) // It will return the fragment 
+ ```
+ 
+ Display the dialog, adding the fragment to the given FragmentManager.
+     
+ ```kotlin
+    FragmentUtils.showDialog(
+        activity: AppCompatActivity,
+        dialogFragment: DialogFragment
+    )
+ ```
+ 
+ Removes fragment with tag **`tag`** from `activity`'s fragment manager if there is such fragment.
+     
+ ```kotlin
+    FragmentUtils.removeByTag(activity: AppCompatActivity, tag: String) //  Returns True  if fragment is removed. False otherwise.
+ ```
+ 
+ Removes fragment with id **`id`** from `activity`'s fragment manager if there is such fragment.
+     
+ ```kotlin
+    FragmentUtils.removeById(activity: AppCompatActivity, @IdRes id: Int) //  Returns True  if fragment is removed. False otherwise.
+ ```
+ 
+ Shows the `fragment`.
+     
+ ```kotlin
+    FragmentUtils.show(
+        activity: AppCompatActivity,
+        fragment: Fragment?
+    )
+ ```
+ 
+ Hides the `fragment`.
+     
+ ```kotlin
+    FragmentUtils.hide(
+        activity: AppCompatActivity,
+        fragment: Fragment?
+    )
+ ```
+ 
+  Hides the `hide` fragment and shows the `show` fragment.
+     
+ ```kotlin
+    FragmentUtils.hideAndShow(
+        activity: AppCompatActivity,
+        hide: Fragment?,
+        show: Fragment?
+    )
+ ```
+ 
+ Hides the `hide` fragment and shows the `show` fragment with animations.
+     
+ ```kotlin
+    FragmentUtils.hideAndShowWithAnimation(
+        activity: AppCompatActivity,
+        hide: Fragment?,
+        show: Fragment?,
+        @AnimRes animIn: Int,
+        @AnimRes animOut: Int
+    )
+ ```
+ 
 # PopupUtils
 
 To show message to user using dialog.
@@ -313,5 +484,14 @@ Here this is used to check whether the email is valid or not EMAIL REGEX.
 
 ```kotlin
    ValidationUtils.isValidEmail(email: String?) // This will return true or false based on given email
+```
+
+# EmojiExcludeFilter
+
+If you want to exclude the emojis you can use this filter. Below is the usage for the same in activity or fragment
+
+
+```kotlin
+   YourEditTextHere.setFilters(arrayOf<InputFilter>(EmojiExcludeFilter))
 ```
 
