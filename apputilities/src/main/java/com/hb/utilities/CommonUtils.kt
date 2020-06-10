@@ -61,7 +61,7 @@ object CommonUtils {
      *
      * @param activity
      */
-    fun hideKeyboard(activity: Activity) {
+    fun hideKeyboard(activity: AppCompatActivity) {
         try {
             val inputManager =
                 activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -78,7 +78,7 @@ object CommonUtils {
      *
      * @param activity
      */
-    fun showKeyboard(activity: Activity) {
+    fun showKeyboard(activity: AppCompatActivity) {
         val inputMethodManager =
             activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.toggleSoftInputFromWindow(
@@ -93,7 +93,7 @@ object CommonUtils {
      *
      * @param activity
      */
-    fun showKeyboard(activity: Activity, view: View) {
+    fun showKeyboard(activity: AppCompatActivity, view: View) {
         val inputMethodManager =
             activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.toggleSoftInputFromWindow(
@@ -109,7 +109,7 @@ object CommonUtils {
      *
      * @param activity
      */
-    fun hideKeyboard(activity: Activity?, view: View?) {
+    fun hideKeyboard(activity: AppCompatActivity?, view: View?) {
         try {
             if (activity != null && view != null) {
                 val inputManager =
@@ -127,7 +127,7 @@ object CommonUtils {
      * @param activity
      */
 
-    fun getStatusBarHeight(activity: Activity): Int {
+    fun getStatusBarHeight(activity: AppCompatActivity): Int {
         val rectangle = Rect()
         val window = activity.window
         window.decorView.getWindowVisibleDisplayFrame(rectangle)
@@ -193,7 +193,7 @@ object CommonUtils {
      * @return
      */
 
-    fun isPermissionGranted(activity: Activity?, permission: String?): Boolean {
+    fun isPermissionGranted(activity: AppCompatActivity?, permission: String?): Boolean {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true
         }

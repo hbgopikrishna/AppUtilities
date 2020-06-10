@@ -23,6 +23,7 @@ object BitmapUtils {
      * This method is used to convert Drawable to Bitmap
      *
      * @param drawable
+     * @return bitmap
      */
 
     fun drawableToBitmap(drawable: Drawable): Bitmap? {
@@ -71,9 +72,9 @@ object BitmapUtils {
      * @return
      */
 
-    fun getBase64FromBitmap(image: Bitmap): String? {
+    fun getBase64FromBitmap(bitmap: Bitmap): String? {
         val baos = ByteArrayOutputStream()
-        image.compress(Bitmap.CompressFormat.PNG, 60, baos)
+        bitmap.compress(Bitmap.CompressFormat.PNG, 60, baos)
         val b = baos.toByteArray()
         return Base64.encodeToString(b, Base64.DEFAULT)
     }

@@ -119,113 +119,7 @@ object FragmentUtils {
         ft.commitAllowingStateLoss()
     }
 
-    /**
-     * Adds provided `fragment` to `frameResId`.
-     *
-     * @param activity       Hosting activity
-     * @param frameResId     Layout id where fragment should be placed
-     * @param fragment       Fragment instance
-     * @param addToBackStack If true transaction would be added to back stack.
-     * @param tag            Fragment transaction's tag
-     */
-    fun add(
-        activity: AppCompatActivity,
-        @IdRes frameResId: Int,
-        fragment: Fragment?,
-        addToBackStack: Boolean,
-        tag: String?
-    ) {
-        val ft =
-            activity.supportFragmentManager.beginTransaction()
-        ft.add(frameResId, fragment!!, tag)
-        if (addToBackStack) ft.addToBackStack(null)
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-        ft.commitAllowingStateLoss()
-    }
-
-    /**
-     * Adds provided `fragment` to `frameResId`.
-     *
-     * @param activity       Hosting activity
-     * @param frameResId     Layout id where fragment should be placed
-     * @param fragment       Fragment instance
-     * @param addToBackStack If true transaction would be added to back stack.
-     */
-    fun add(
-        activity: AppCompatActivity,
-        @IdRes frameResId: Int,
-        fragment: Fragment?,
-        addToBackStack: Boolean
-    ) {
-        add(
-            activity,
-            frameResId,
-            fragment,
-            addToBackStack,
-            null
-        )
-    }
-
-    /**
-     * Adds provided `fragment` to `frameResId`.
-     *
-     * @param activity   Hosting activity
-     * @param frameResId Layout id where fragment should be placed
-     * @param fragment   Fragment instance
-     */
-    fun add(
-        activity: AppCompatActivity,
-        @IdRes frameResId: Int,
-        fragment: Fragment?
-    ) {
-        add(
-            activity,
-            frameResId,
-            fragment,
-            false,
-            null
-        )
-    }
-
-    /**
-     * Adds provided `fragment` to `frameResId` without adding to backstack.
-     *
-     * @param activity   Hosting activity
-     * @param frameResId id where fragment should be placed
-     * @param fragment   Fragment instance
-     * @param tag        The tag, that should be applied to transaction.
-     */
-    fun add(
-        activity: AppCompatActivity,
-        @IdRes frameResId: Int,
-        fragment: Fragment?,
-        tag: String?
-    ) {
-        add(
-            activity,
-            frameResId,
-            fragment,
-            false,
-            tag
-        )
-    }
-
-    /**
-     * Adds provided `fragment` to `frameResId` without adding to backstack.
-     *
-     * @param activity Hosting activity
-     * @param fragment Fragment instance
-     * @param tag      The tag, that should be applied to transaction.
-     */
-    fun add(
-        activity: AppCompatActivity,
-        fragment: Fragment?,
-        tag: String?
-    ) {
-        add(activity, 0, fragment, false, tag)
-    }
-
-    /**
+     /**
      * Pops off the last fragment in the provided activity's stack.
      *
      * @param activity The activity which fragment's stack will be popped
@@ -284,25 +178,7 @@ object FragmentUtils {
         return fragment.childFragmentManager.findFragmentByTag(tag) as T?
     }
 
-    /**
-     * Add `fragment` as a child to `rootFragment`.
-     */
-    fun addChild(
-        rootFragment: Fragment,
-        @IdRes frameResId: Int,
-        fragment: Fragment?,
-        tag: String?
-    ) {
-        addChild(
-            rootFragment,
-            frameResId,
-            fragment,
-            false,
-            tag
-        )
-    }
-
-    /**
+     /**
      * Searches for fragment in [FragmentManager] by provided `tag`.
      *
      * @param activity Activity to search in.

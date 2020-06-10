@@ -8,7 +8,7 @@ object ValidationUtils {
      * This method is used to check email is valid or not
      * @param email
      */
-    fun isValidEmail(email: CharSequence?): Boolean {
+    fun isValidEmail(email: String?): Boolean {
         return email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 

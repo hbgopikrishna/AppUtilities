@@ -2,10 +2,7 @@ package com.hb.utilities
 
 import android.content.Context
 import android.content.DialogInterface
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
@@ -70,6 +67,18 @@ object PopupUtils {
     }
 
     fun showSnackBar(layout: LinearLayout, message: String) {
+        val snackbar: Snackbar = Snackbar
+            .make(layout, message, Snackbar.LENGTH_LONG)
+        snackbar.show()
+    }
+
+    fun showSnackBar(layout: RelativeLayout, message: String) {
+        val snackbar: Snackbar = Snackbar
+            .make(layout, message, Snackbar.LENGTH_LONG)
+        snackbar.show()
+    }
+
+    fun showSnackBar(layout: FrameLayout, message: String) {
         val snackbar: Snackbar = Snackbar
             .make(layout, message, Snackbar.LENGTH_LONG)
         snackbar.show()

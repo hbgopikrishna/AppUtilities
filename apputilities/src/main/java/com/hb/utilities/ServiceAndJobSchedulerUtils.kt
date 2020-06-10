@@ -90,7 +90,7 @@ object ServiceAndJobSchedulerUtils {
     }
 
     /**
-     * This method is used to start required service
+     * This method is used to schedule a job
      * @param context
      * @param serviceClass - is a service which we want schedule for a job
      * @return
