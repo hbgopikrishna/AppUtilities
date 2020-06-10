@@ -474,13 +474,13 @@ Here this is used to used to Capitalize the given string.
 
 # ValidationUtils
 
-Here this is used to check whether the phone number is valid or not MOBILE REGEX.
+Here this is used to check whether the phone number is valid or not using MOBILE REGEX.
 
 ```kotlin
    ValidationUtils.isValidPhoneNumber(mobileNumber: String?) // This will return true or false based on given mobile number
 ```
 
-Here this is used to check whether the email is valid or not EMAIL REGEX.
+Here this is used to check whether the email is valid or not using EMAIL REGEX.
 
 ```kotlin
    ValidationUtils.isValidEmail(email: String?) // This will return true or false based on given email
