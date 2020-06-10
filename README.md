@@ -23,69 +23,295 @@ For example
 
 # BitmapUtils
 
-Here this is used to convert drawable into Bitmap.
+Convert drawable into Bitmap.
 
 ```kotlin
-   BitmapUtils.drawableToBitmap(resources.getDrawable(R.mipmap.ic_launcher))
+   BitmapUtils.drawableToBitmap(drawable: Drawable) // convert drawable to bitmap and will return it
+```
+To get Mutable Bitmap.
+
+```kotlin
+   BitmapUtils.getMutableBitMap(bitmap: Bitmap) // convert bitmap to mutable bitmap and will return it
 ```
 
-You can find number of useful methods related to bitmap in `BitmapUtils` class.
+To get base64 string from Bitmap.
+
+```kotlin
+   BitmapUtils.getBase64FromBitmap(bitmap: Bitmap) // it will convert bitmap to base64 string and return 
+```
+
+To rotate the given Bitmap.
+
+```kotlin
+   BitmapUtils.rotateBitmap(
+        mContext: Context,
+        mBit: Bitmap,
+        imagePath: String?
+    ) // it will rotate the given bitmap and return it
+```
+
+To resize the Image.
+
+```kotlin
+   BitmapUtils.getResizeImage(
+        mContext: Context,
+        scalingLogic: ScalingUtilities.ScalingLogic, // Either crop or fit
+        rotationNeeded: Boolean, // need to roatate or not
+        mCurrentPhotoPath: String,
+        width: Int, // required width
+        height: Int // required height
+    ) // it will rotate the given image and return the bitmap 
+```
 
 # CommonUtils
 
-Here this is used to navigate user to playstore to check whether we have any update or not.
+To show the keyboard.
 
 ```kotlin
-   CommonUtils.navigateToPlayStore(this)
+   CommonUtils.showKeyboard(activity: AppCompatActivity)
 ```
 
-You can find number of useful methods in `CommonUtils` class.
+To hide the keyboard.
+
+```kotlin
+   CommonUtils.hideKeyboard(activity: AppCompatActivity)
+```
+To show the keyboard for a view.
+
+```kotlin
+   CommonUtils.showKeyboard(activity: AppCompatActivity, view: View)
+```
+
+To hide the keyboard of a view.
+
+```kotlin
+   CommonUtils.hideKeyboard(activity: AppCompatActivity?, view: View?)
+```
+
+To get the status bar height.
+
+```kotlin
+   CommonUtils.getStatusBarHeight(activity: AppCompatActivity) // This will return the height of the status bar
+```
+
+To convert dp into pixel.
+
+```kotlin
+   CommonUtils.convertDpToPixel(
+        sizeInDp: Int,
+        context: Context
+    ) // This will convert dp value in to pixel and return it
+```
+
+To get device name.
+
+```kotlin
+   CommonUtils.getDeviceName() // This will return device name as HTC One (M8)
+```
+
+
+To navigate user to playstore to check whether we have any update or not.
+
+```kotlin
+   CommonUtils.navigateToPlayStore(activity: AppCompatActivity)
+```
+
+To get random instant value.
+
+```kotlin
+   CommonUtils.getRandomInstantValue() // This will return int random value
+```
+
+To check permission granted or not.
+
+```kotlin
+   CommonUtils.isPermissionGranted(
+   activity: AppCompatActivity?, 
+   permission: String? //permission which we required to check is granted or not
+   ) // This will return true or false by checking the permission status
+```
+
+To share string or text using Intent.
+
+```kotlin
+   CommonUtils.shareTextIntent(
+        context: Context,
+        shareText: String? // A string to share
+    )
+```
 
 # DateTimeUtils
 
-Here this is used to get current date time in required format. 
+To get current date time in required format. 
+
 ```kotlin
-   DateTimeUtils.getCurrentDateTime("dd-mm-yyyy")
+   DateTimeUtils.getCurrentDateTime(
+        requiredDateFormat: String?
+    ) // This will return current date time string in the required date format 
 ```
 
-You can find number of useful methods related to date and time in `DateTimeUtils` class.
+To get the date string of one format from another format date string. 
+
+```kotlin
+   DateTimeUtils.getDateStringFromDateString(
+        dateString: String?, // Input date value
+        dateFormat: String?, // Input date value format
+        requiredDateFormat: String?, // Required date format
+        setTimeZone: Boolean, // boolean value to set the timezone to date or not
+        timeZone: String? // timezone to add the date value
+    ) // This will return the date time string in the required date format from another format
+```
+
+To get the date string of one format from another format date string with locale. 
+
+```kotlin
+   DateTimeUtils.getDateStringFromDateStringWithLocale(
+        dateString: String?, // Input date value
+        dateFormat: String?, // Input date value format
+        requiredDateFormat: String?, // Required date format
+        setTimeZone: Boolean, // boolean value to set the timezone to date or not
+        timeZone: String? // timezone to add the date value
+        locale: Locale?, // Input locale value
+        requiredLocale: Locale? // Output or required date locale value
+    ) // This will return the date time string in the required date format from another format
+```
+
+To get the date string. 
+
+```kotlin
+   DateTimeUtils.getDateStringFromDate(
+        date: Long,
+        requiredDateFormat: String?
+    ) // This will return date time string in the required date format 
+```
+
+To check whether two dates are belongs to same month or not. 
+
+```kotlin
+   DateTimeUtils.isSameMonthDates(
+        dateFormat: String?, // date format to check dates
+        monthOne: String?, // value of first date to check
+        monthTwo: String? // value of second date to check
+    ) // This will check both dates are in same month and will return true or false
+```
+
+To check whether two dates are belongs to same year or not. 
+
+```kotlin
+   DateTimeUtils.isSameYearDates(
+        dateFormat: String?, // date format to check dates
+        yearOne: String?, // value of first date to check
+        yearTwo: String? // value of second date to check
+    ) // This will check both dates are in same year and will return true or false
+```
 
 
 # PopupUtils
 
-Here this is used to show message to user.
+To show message to user using dialog.
+
 ```kotlin
-   PopupUtils.showMessage(this,"App updates are available!")
+   PopupUtils.showMessage(
+        activity: AppCompatActivity,
+        message: String?
+    )
 ```
 
-You can find number of useful methods in `PopupUtils` class.
+To show message to user using toast.
+
+```kotlin
+   PopupUtils.showToastMessage(
+        context: Context?,
+        message: String?
+    )
+```
+
+To show message to user using snackbar 
+for AppCompatEditText.
+
+```kotlin
+   PopupUtils.showSnackBar(editText: AppCompatEditText, message: String)
+```
+
+To show message to user using snackbar using CoordinatorLayout.
+
+```kotlin
+   PopupUtils.showSnackBar(layout: CoordinatorLayout, message: String)
+```
+
+To show message to user using snackbar using LinearLayout.
+
+```kotlin
+   PopupUtils.showSnackBar(layout: LinearLayout, message: String)
+```
+
+
+To show message to user using snackbar using RelativeLayout.
+
+```kotlin
+   PopupUtils.showSnackBar(layout: RelativeLayout, message: String)
+```
+
+To show message to user using snackbar using FrameLayout.
+
+```kotlin
+   PopupUtils.showSnackBar(layout: FrameLayout, message: String)
+```
 
 # ServiceAndJobSchedulerUtils
 
-Here this is used to check whether my service is running or not.
+To check whether my service is running or not.
+
 ```kotlin
-   ServiceAndJobSchedulerUtils.isMyServiceRunning(this,MyService::class.java)
+   ServiceAndJobSchedulerUtils.isMyServiceRunning(
+        activity: AppCompatActivity,
+        serviceClass: Class<*>
+    ) //  This will check the service is running or not and return true or false based on service status
+```
+To start required service.
+
+```kotlin
+   ServiceAndJobSchedulerUtils.startRequiredService(
+        activity: AppCompatActivity,
+        serviceClass: Class<*>
+    ) 
 ```
 
-You can find other useful methods in `ServiceAndJobSchedulerUtils` class.
+To schedule a job.
+
+```kotlin
+   ServiceAndJobSchedulerUtils.scheduleJob(
+        context: Context,
+        serviceClass: Class<*>
+    ) 
+```
 
 # StringUtils
 
 Here this is used to check whether the passed string is empty or non-empty or null.
 
 ```kotlin
-   StringUtils.isEmpty("Hello")
+   StringUtils.isEmpty(data: String?) // This will return true or flase based on string 
 ```
 
-You can find other useful methods in `StringUtils` class.
+Here this is used to used to Capitalize the given string.
+
+```kotlin
+   StringUtils.capitalize(capString: String?) // This will captilize and return the string
+```
+
 
 # ValidationUtils
 
-Here this is used to check whether the phone number is valid or not.
+Here this is used to check whether the phone number is valid or not MOBILE REGEX.
 
 ```kotlin
-   ValidationUtils.isValidPhoneNumber("2134")
+   ValidationUtils.isValidPhoneNumber(mobileNumber: String?) // This will return true or false based on given mobile number
 ```
 
-You can find other useful methods in `ValidationUtils` class.
+Here this is used to check whether the email is valid or not EMAIL REGEX.
+
+```kotlin
+   ValidationUtils.isValidEmail(email: String?) // This will return true or false based on given email
+```
 
