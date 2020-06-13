@@ -11,9 +11,14 @@
    3.DateTimeUtils - is the class which contains methods related to Date operations
    4.PopupUtils - contains different types of message showing options to the users
    5.FragmentUtils - contains fragment related functionalities and methods
-   6.ServiceAndJobSchedulerUtils - related to service start ,stop running status and job scheduler 
+   6.ServiceUtils - related to service start ,stop running status 
    7.StringUtils - will have methods related to string & it's opertaions
    8.ValidationUtils - some useful validations will be there in this
+   9.FileExtensionUtils - some useful utilis related to files
+   10.FileExtensionUtils - file related methods
+   11.ImageExtensionUtils - image files related methods
+   12.UnitTypeUtility - unit type conversion methods
+   13.ViewUtils - related to views
    ```
 # How it works?
 
@@ -26,24 +31,24 @@ For example
 Convert drawable into Bitmap.
 
 ```kotlin
-   BitmapUtils.drawableToBitmap(drawable: Drawable) // convert drawable to bitmap and will return it
+   drawableToBitmap(drawable: Drawable) // convert drawable to bitmap and will return it
 ```
 To get Mutable Bitmap.
 
 ```kotlin
-   BitmapUtils.getMutableBitMap(bitmap: Bitmap) // convert bitmap to mutable bitmap and will return it
+   getMutableBitMap(bitmap: Bitmap) // convert bitmap to mutable bitmap and will return it
 ```
 
 To get base64 string from Bitmap.
 
 ```kotlin
-   BitmapUtils.getBase64FromBitmap(bitmap: Bitmap) // it will convert bitmap to base64 string and return 
+   getBase64FromBitmap(bitmap: Bitmap) // it will convert bitmap to base64 string and return 
 ```
 
 To rotate the given Bitmap.
 
 ```kotlin
-   BitmapUtils.rotateBitmap(
+   rotateBitmap(
         mContext: Context,
         mBit: Bitmap,
         imagePath: String?
@@ -53,7 +58,7 @@ To rotate the given Bitmap.
 To resize the Image.
 
 ```kotlin
-   BitmapUtils.getResizeImage(
+   getResizeImage(
         mContext: Context,
         scalingLogic: ScalingUtilities.ScalingLogic, // Either crop or fit
         rotationNeeded: Boolean, // need to roatate or not
@@ -65,70 +70,84 @@ To resize the Image.
 
 # CommonUtils
 
-To show the keyboard.
+To show the keyboard.To check whether my service is running or not.
 
 ```kotlin
-   CommonUtils.showKeyboard(activity: AppCompatActivity)
+   ServiceAndJobSchedulerUtils.isMyServiceRunning(
+        activity: AppCompatActivity,
+        serviceClass: Class<*>
+    ) //  This will check the service is running or not and return true or false based on service status
+```
+To start required service.
+
+```kotlin
+   ServiceAndJobSchedulerUtils.startRequiredService(
+        activity: AppCompatActivity,
+        serviceClass: Class<*>
+    ) 
+```
+
+```kotlin
+   AppCompatActivity.showKeyboard()
 ```
 
 To hide the keyboard.
 
 ```kotlin
-   CommonUtils.hideKeyboard(activity: AppCompatActivity)
+   AppCompatActivity.hideKeyboard()
 ```
 To show the keyboard for a view.
 
 ```kotlin
-   CommonUtils.showKeyboard(activity: AppCompatActivity, view: View)
+   AppCompatActivity.showKeyboard(view: View)
 ```
 
 To hide the keyboard of a view.
 
 ```kotlin
-   CommonUtils.hideKeyboard(activity: AppCompatActivity?, view: View?)
+   AppCompatActivity.hideKeyboard(view: View?)
 ```
 
-To get the status bar height.
+To get the status bar height.To check whether my service is running or not.
 
 ```kotlin
-   CommonUtils.getStatusBarHeight(activity: AppCompatActivity) // This will return the height of the status bar
+   ServiceAndJobSchedulerUtils.isMyServiceRunning(
+        activity: AppCompatActivity,
+        serviceClass: Class<*>
+    ) //  This will check the service is running or not and return true or false based on service status
+```
+To start required service.
+
+```kotlin
+   ServiceAndJobSchedulerUtils.startRequiredService(
+        activity: AppCompatActivity,
+        serviceClass: Class<*>
+    ) 
+```
+
+```kotlin
+   AppCompatActivity.getStatusBarHeight() // This will return the height of the status bar
 ```
 
 To convert dp into pixel.
 
 ```kotlin
-   CommonUtils.convertDpToPixel(
-        sizeInDp: Int,
-        context: Context
-    ) // This will convert dp value in to pixel and return it
+   Context.convertDpToPixel(
+    sizeInDp: Int
+   ) // This will convert dp value in to pixel and return it
 ```
 
 To get device name.
 
 ```kotlin
-   CommonUtils.getDeviceName() // This will return device name as HTC One (M8)
+   getDeviceName() // This will return device name as HTC One (M8)
 ```
 
 
 To navigate user to playstore to check whether we have any update or not.
 
 ```kotlin
-   CommonUtils.navigateToPlayStore(activity: AppCompatActivity)
-```
-
-To get random instant value.
-
-```kotlin
-   CommonUtils.getRandomInstantValue() // This will return int random value
-```
-
-To check permission granted or not.
-
-```kotlin
-   CommonUtils.isPermissionGranted(
-   activity: AppCompatActivity?, 
-   permission: String? //permission which we required to check is granted or not
-   ) // This will return true or false by checking the permission status
+   AppCompatActivity.navigateToPlayStore()
 ```
 
 To share string or text using Intent.
@@ -140,12 +159,42 @@ To share string or text using Intent.
     )
 ```
 
+To check network is available or not.
+
+```kotlin
+   Context.isNetworkAvailable() // Retun true if network is available or else return false
+```
+
+To trim the text in AppCompatEditText.
+
+```kotlin
+   AppCompatEditText?.getTrimText()
+```
+
+To open application settings.
+
+```kotlin
+   AppCompatActivity.openApplicationSettings()
+```
+
+To set light status bar.
+
+```kotlin
+   AppCompatActivity.setLightStatusBar(view: View, @ColorRes color: Int)
+```
+
+To set status bar color.
+
+```kotlin
+   AppCompatActivity.setStatusBarColor(@ColorRes color: Int)
+```
+
 # DateTimeUtils
 
 To get current date time in required format. 
 
 ```kotlin
-   DateTimeUtils.getCurrentDateTime(
+   getCurrentDateTime(
         requiredDateFormat: String?
     ) // This will return current date time string in the required date format 
 ```
@@ -153,7 +202,7 @@ To get current date time in required format.
 To get the date string of one format from another format date string. 
 
 ```kotlin
-   DateTimeUtils.getDateStringFromDateString(
+   getDateStringFromDateString(
         dateString: String?, // Input date value
         dateFormat: String?, // Input date value format
         requiredDateFormat: String?, // Required date format
@@ -165,7 +214,7 @@ To get the date string of one format from another format date string.
 To get the date string of one format from another format date string with locale. 
 
 ```kotlin
-   DateTimeUtils.getDateStringFromDateStringWithLocale(
+   getDateStringFromDateStringWithLocale(
         dateString: String?, // Input date value
         dateFormat: String?, // Input date value format
         requiredDateFormat: String?, // Required date format
@@ -179,7 +228,7 @@ To get the date string of one format from another format date string with locale
 To get the date string. 
 
 ```kotlin
-   DateTimeUtils.getDateStringFromDate(
+   getDateStringFromDate(
         date: Long,
         requiredDateFormat: String?
     ) // This will return date time string in the required date format 
@@ -188,7 +237,7 @@ To get the date string.
 To check whether two dates are belongs to same month or not. 
 
 ```kotlin
-   DateTimeUtils.isSameMonthDates(
+   isSameMonthDates(
         dateFormat: String?, // date format to check dates
         monthOne: String?, // value of first date to check
         monthTwo: String? // value of second date to check
@@ -198,7 +247,7 @@ To check whether two dates are belongs to same month or not.
 To check whether two dates are belongs to same year or not. 
 
 ```kotlin
-   DateTimeUtils.isSameYearDates(
+   isSameYearDates(
         dateFormat: String?, // date format to check dates
         yearOne: String?, // value of first date to check
         yearTwo: String? // value of second date to check
@@ -382,54 +431,16 @@ To check whether two dates are belongs to same year or not.
 To show message to user using dialog.
 
 ```kotlin
-   PopupUtils.showMessage(
-        activity: AppCompatActivity,
-        message: String?
-    )
+   AppCompatActivity.showDialogMessage(message: String?)
 ```
 
 To show message to user using toast.
 
 ```kotlin
-   PopupUtils.showToastMessage(
-        context: Context?,
-        message: String?
-    )
+   String.showToast(context: Context?)
 ```
 
-To show message to user using snackbar 
-for AppCompatEditText.
-
-```kotlin
-   PopupUtils.showSnackBar(editText: AppCompatEditText, message: String)
-```
-
-To show message to user using snackbar using CoordinatorLayout.
-
-```kotlin
-   PopupUtils.showSnackBar(layout: CoordinatorLayout, message: String)
-```
-
-To show message to user using snackbar using LinearLayout.
-
-```kotlin
-   PopupUtils.showSnackBar(layout: LinearLayout, message: String)
-```
-
-
-To show message to user using snackbar using RelativeLayout.
-
-```kotlin
-   PopupUtils.showSnackBar(layout: RelativeLayout, message: String)
-```
-
-To show message to user using snackbar using FrameLayout.
-
-```kotlin
-   PopupUtils.showSnackBar(layout: FrameLayout, message: String)
-```
-
-# ServiceAndJobSchedulerUtils
+# ServiceUtils
 
 To check whether my service is running or not.
 
@@ -448,27 +459,18 @@ To start required service.
     ) 
 ```
 
-To schedule a job.
-
-```kotlin
-   ServiceAndJobSchedulerUtils.scheduleJob(
-        context: Context,
-        serviceClass: Class<*>
-    ) 
-```
-
 # StringUtils
 
 Here this is used to check whether the passed string is empty or non-empty or null.
 
 ```kotlin
-   StringUtils.isEmpty(data: String?) // This will return true or flase based on string 
+   isEmpty(data: String?) // This will return true or flase based on string 
 ```
 
 Here this is used to used to Capitalize the given string.
 
 ```kotlin
-   StringUtils.capitalize(capString: String?) // This will captilize and return the string
+   capitalize(capString: String?) // This will captilize and return the string
 ```
 
 
@@ -477,21 +479,102 @@ Here this is used to used to Capitalize the given string.
 Here this is used to check whether the phone number is valid or not using MOBILE REGEX.
 
 ```kotlin
-   ValidationUtils.isValidPhoneNumber(mobileNumber: String?) // This will return true or false based on given mobile number
+   String.isValidPhoneNumber() // This will return true or false based on given mobile number
 ```
 
 Here this is used to check whether the email is valid or not using EMAIL REGEX.
 
 ```kotlin
-   ValidationUtils.isValidEmail(email: String?) // This will return true or false based on given email
+   String.isValidEmail() // This will return true or false based on given email
 ```
-
-# EmojiExcludeFilter
-
-If you want to exclude the emojis you can use this filter. Below is the usage for the same in activity or fragment
-
+Here this is used to check whether the password is strong or not.
 
 ```kotlin
-   YourEditTextHere.setFilters(arrayOf<InputFilter>(EmojiExcludeFilter))
+   String.isValidStrongPassword() // This will return true or false based on given email
 ```
 
+# FileExtensionUtils
+
+To get Root path.
+
+```kotlin
+   AppCompatActivity.getRootPath(directoryName: String, folderName: String)
+```
+
+To get Root directory.
+
+```kotlin
+   Context.getRootDirectory(directoryName: String, folderName: String)
+```
+
+To delete file.
+
+```kotlin
+   File.deleteFile()
+```
+
+# ImageExtensionUtils
+
+To load image.
+
+```kotlin
+   ImageView.loadImage(url: String, placeHolder: Int = -1)
+```
+
+To get MimeType of file using path.
+
+```kotlin
+   String.getMimeType()
+```
+
+# UnitTypeUtility
+
+To convert meter to foot.
+
+```kotlin
+   meterToFoot(meter: Float)
+```
+
+To convert foot to meter.
+
+```kotlin
+   footToMeter(foot: Float)
+```
+
+To convert cm to meter.
+
+```kotlin
+   cmToMeter(cm: Float)
+```
+
+To convert inches to foot.
+
+```kotlin
+   inchesToFoot(foot: Float)
+```
+
+To convert kg to lbs.
+
+```kotlin
+   kgToLbs(kg: Float)
+```
+
+To convert lbs to kg.
+
+```kotlin
+   lbsToKg(lbs: Float)
+```
+
+# ViewUtils
+
+To set view visibility .
+
+```kotlin
+   View.setVisible(visible: Boolean)
+```
+
+To set view invisible.
+
+```kotlin
+   View.setInVisible()
+```
