@@ -5,21 +5,6 @@
 1. If you want to perform some operations related to dates , strings you can use this library
 2. This library has following utils as of now
 
-   ```javascript
-   1.BitmapUtils - will have some functionalities or wide range of useful methods related to BITMAP are there in this
-   2.CommonUtils - will have most common useful methods covered in this
-   3.DateTimeUtils - is the class which contains methods related to Date operations
-   4.PopupUtils - contains different types of message showing options to the users
-   5.FragmentUtils - contains fragment related functionalities and methods
-   6.ServiceUtils - related to service start ,stop running status 
-   7.StringUtils - will have methods related to string & it's opertaions
-   8.ValidationUtils - some useful validations will be there in this
-   9.FileExtensionUtils - some useful utilis related to files
-   10.FileExtensionUtils - file related methods
-   11.ImageExtensionUtils - image files related methods
-   12.UnitTypeUtility - unit type conversion methods
-   13.ViewUtils - related to views
-   ```
 # How it works?
 
 In our Activity/Fragment we can use any of the above classes.
@@ -68,24 +53,15 @@ To resize the Image.
     ) // it will rotate the given image and return the bitmap 
 ```
 
+To get circle bitmap from given bitmap.
+
+```kotlin
+   getCircleBitmap(bitmap: Bitmap)
+```
+
 # CommonUtils
 
-To show the keyboard.To check whether my service is running or not.
-
-```kotlin
-   ServiceAndJobSchedulerUtils.isMyServiceRunning(
-        activity: AppCompatActivity,
-        serviceClass: Class<*>
-    ) //  This will check the service is running or not and return true or false based on service status
-```
-To start required service.
-
-```kotlin
-   ServiceAndJobSchedulerUtils.startRequiredService(
-        activity: AppCompatActivity,
-        serviceClass: Class<*>
-    ) 
-```
+To show the keyboard
 
 ```kotlin
    AppCompatActivity.showKeyboard()
@@ -96,53 +72,6 @@ To hide the keyboard.
 ```kotlin
    AppCompatActivity.hideKeyboard()
 ```
-To show the keyboard for a view.
-
-```kotlin
-   AppCompatActivity.showKeyboard(view: View)
-```
-
-To hide the keyboard of a view.
-
-```kotlin
-   AppCompatActivity.hideKeyboard(view: View?)
-```
-
-To get the status bar height.To check whether my service is running or not.
-
-```kotlin
-   ServiceAndJobSchedulerUtils.isMyServiceRunning(
-        activity: AppCompatActivity,
-        serviceClass: Class<*>
-    ) //  This will check the service is running or not and return true or false based on service status
-```
-To start required service.
-
-```kotlin
-   ServiceAndJobSchedulerUtils.startRequiredService(
-        activity: AppCompatActivity,
-        serviceClass: Class<*>
-    ) 
-```
-
-```kotlin
-   AppCompatActivity.getStatusBarHeight() // This will return the height of the status bar
-```
-
-To convert dp into pixel.
-
-```kotlin
-   Context.convertDpToPixel(
-    sizeInDp: Int
-   ) // This will convert dp value in to pixel and return it
-```
-
-To get device name.
-
-```kotlin
-   getDeviceName() // This will return device name as HTC One (M8)
-```
-
 
 To navigate user to playstore to check whether we have any update or not.
 
@@ -150,25 +79,16 @@ To navigate user to playstore to check whether we have any update or not.
    AppCompatActivity.navigateToPlayStore()
 ```
 
-To share string or text using Intent.
+To get the status bar height.
 
 ```kotlin
-   CommonUtils.shareTextIntent(
-        context: Context,
-        shareText: String? // A string to share
-    )
+   AppCompatActivity.getStatusBarHeight() // This will return the height of the status bar
 ```
 
-To check network is available or not.
+To get device name.
 
 ```kotlin
-   Context.isNetworkAvailable() // Retun true if network is available or else return false
-```
-
-To trim the text in AppCompatEditText.
-
-```kotlin
-   AppCompatEditText?.getTrimText()
+   getDeviceName() // This will return device name as HTC One (M8)
 ```
 
 To open application settings.
@@ -187,6 +107,90 @@ To set status bar color.
 
 ```kotlin
    AppCompatActivity.setStatusBarColor(@ColorRes color: Int)
+```
+To check is bluetooth enabled.
+
+```kotlin
+   isBluetoothEnabled()
+```
+
+To get Device OS.
+
+```kotlin
+   getDeviceOS()
+```
+
+To open browser.
+
+```kotlin
+   openBrowser(activity: AppCompatActivity, url: String?)
+```
+
+To get current country code.
+
+```kotlin
+   getCurrentCountryCode(context: Context)
+```
+
+To get Alphabet List.
+
+```kotlin
+   getAlphabetList(context: Context)
+```
+
+To get Device language.
+
+```kotlin
+   getDeviceLanguage()
+```
+
+# ContextUtils
+
+To share text Intent. 
+
+```kotlin
+   Context.shareTextIntent(shareText: String?)
+```
+
+To check network is available or not. 
+
+```kotlin
+   Context.isNetworkAvailable()
+```
+
+To get Android ID. 
+
+```kotlin
+   Context.getAndroidID()
+```
+
+To get window dimension. 
+
+```kotlin
+   Context.getWindowDimension()
+```
+To get actionbar height. 
+
+```kotlin
+   Context.getActionBarHeight()
+```Alphabet List
+
+To get screen size. 
+
+```kotlin
+   Context.getScreenSize()
+```
+
+To check location is enabled. 
+
+```kotlin
+   Context.isLocationEnabled()
+```
+
+To get json data from asset. 
+
+```kotlin
+   Context.getJsonDataFromAsset(fileName: String)
 ```
 
 # DateTimeUtils
@@ -253,6 +257,129 @@ To check whether two dates are belongs to same year or not.
         yearTwo: String? // value of second date to check
     ) // This will check both dates are in same year and will return true or false
 ```
+
+To check two dates. 
+
+```kotlin
+   checkDates(d1: String, d2: String)
+```
+
+To get day from UnixTime. 
+
+```kotlin
+   getDayFromUnixTime(unixSeconds: Long)
+```
+
+To get date from UnixTime. 
+
+```kotlin
+   getDateFromUnixTime(unixSeconds: Long)
+```
+
+To get time from UnixTime. 
+
+```kotlin
+   getTimeFromUnixTime(unixSeconds: Long)
+```
+
+To get date time in millis. 
+
+```kotlin
+   getDateInMillis(srcDate: String)
+```
+
+To check date is more than 24 hrs. 
+
+```kotlin
+   isDateCross24Hours(startDate: Date, endDate: Date)
+```
+
+# FileExtensionUtils
+
+To get Root path.
+
+```kotlin
+   AppCompatActivity.getRootPath(directoryName: String, folderName: String)
+```
+
+To get Root directory.
+
+```kotlin
+   Context.getRootDirectory(directoryName: String, folderName: String)
+```
+
+To delete file.
+
+```kotlin
+   File.deleteFile()
+```
+
+To get file extension.
+
+```kotlin
+   getExtension(uri: String?)
+```
+
+To check it's local or not.
+
+```kotlin
+   isMediaUri(uri: Uri)
+```
+
+To check Uri is a MediaStore Uri.
+
+```kotlin
+   isLocal(url: String?)
+```
+
+To convert Uri from file.
+
+```kotlin
+   getUri(file: File?)
+```
+
+To get path without filename.
+
+```kotlin
+   getPathWithoutFilename(file: File?) //Returns the path only (without file name).
+```
+
+To get mime type from path.
+
+```kotlin
+   String.getMimeType()
+```
+
+To get mime type from file.
+
+```kotlin
+   File.getMimeType()
+```
+
+To check is it external storage.
+
+```kotlin
+   isExternalStorageDocument(uri: Uri)
+```
+
+To check is it download document.
+
+```kotlin
+   isDownloadsDocument(uri: Uri)
+```
+
+To check is it media document.
+
+```kotlin
+   isMediaDocument(uri: Uri)
+```
+
+To check is it google photos.
+
+```kotlin
+   isGooglePhotosUri(uri: Uri)
+```
+
 
 # FragmentUtils
 
@@ -426,6 +553,14 @@ To check whether two dates are belongs to same year or not.
     )
  ```
  
+# ImageExtensionUtils
+
+To load image using url.
+
+```kotlin
+   ImageView.loadImage(url: String, placeHolder: Int = -1)
+```
+ 
 # PopupUtils
 
 To show message to user using dialog.
@@ -440,12 +575,42 @@ To show message to user using toast.
    String.showToast(context: Context?)
 ```
 
+To show message to user for edittext using snackbar.
+
+```kotlin
+   AppCompatEditText.showSnackBar(message: String)
+```
+
+To show message to user for CoordinatorLayout using snackbar.
+
+```kotlin
+   CoordinatorLayout.showSnackBar(message: String)
+```
+
+To show message to user for LinearLayout using snackbar.
+
+```kotlin
+   LinearLayout.showSnackBar(message: String)
+```
+
+To show message to user for RelativeLayout using snackbar.
+
+```kotlin
+   RelativeLayout.showSnackBar(message: String)
+```
+
+To show message to user for FrameLayout using snackbar.
+
+```kotlin
+   FrameLayout.showSnackBar(message: String)
+```
+
 # ServiceUtils
 
 To check whether my service is running or not.
 
 ```kotlin
-   ServiceAndJobSchedulerUtils.isMyServiceRunning(
+   ServiceUtils.isMyServiceRunning(
         activity: AppCompatActivity,
         serviceClass: Class<*>
     ) //  This will check the service is running or not and return true or false based on service status
@@ -453,7 +618,7 @@ To check whether my service is running or not.
 To start required service.
 
 ```kotlin
-   ServiceAndJobSchedulerUtils.startRequiredService(
+   ServiceUtils.startRequiredService(
         activity: AppCompatActivity,
         serviceClass: Class<*>
     ) 
@@ -464,7 +629,7 @@ To start required service.
 Here this is used to check whether the passed string is empty or non-empty or null.
 
 ```kotlin
-   isEmpty(data: String?) // This will return true or flase based on string 
+   String.isEmptyString() // This will return true or flase based on string 
 ```
 
 Here this is used to used to Capitalize the given string.
@@ -473,59 +638,84 @@ Here this is used to used to Capitalize the given string.
    capitalize(capString: String?) // This will captilize and return the string
 ```
 
-
-# ValidationUtils
-
-Here this is used to check whether the phone number is valid or not using MOBILE REGEX.
+Here this is used to get trim text from EditText
 
 ```kotlin
-   String.isValidPhoneNumber() // This will return true or false based on given mobile number
+   AppCompatEditText?.getTrimText()
 ```
 
-Here this is used to check whether the email is valid or not using EMAIL REGEX.
+To get string array from comma seperated string
 
 ```kotlin
-   String.isValidEmail() // This will return true or false based on given email
+   String.getStringArray()
 ```
-Here this is used to check whether the password is strong or not.
+
+To get Not Null Text
 
 ```kotlin
-   String.isValidStrongPassword() // This will return true or false based on given email
+   getNotNullText(resultValue: String?)
 ```
 
-# FileExtensionUtils
-
-To get Root path.
+To get Not Null Dash Symbol Text
 
 ```kotlin
-   AppCompatActivity.getRootPath(directoryName: String, folderName: String)
+   getNotNullDashSymbolText(resultValue: String?)
 ```
 
-To get Root directory.
+To get Not Null zero Text
 
 ```kotlin
-   Context.getRootDirectory(directoryName: String, folderName: String)
+   getNotNullZeroText(resultValue: String?)
 ```
 
-To delete file.
+To get Not Null and Non Decimal Text
 
 ```kotlin
-   File.deleteFile()
+   getNotNullAndNonDecimalText(resultValue: String?)
 ```
 
-# ImageExtensionUtils
-
-To load image.
+To set HTML string to AppCompatTextView
 
 ```kotlin
-   ImageView.loadImage(url: String, placeHolder: Int = -1)
+   AppCompatTextView.setHtmlString(content: String)
 ```
 
-To get MimeType of file using path.
+To append zero if required and return string
 
 ```kotlin
-   String.getMimeType()
+   Int.appendZeroIfRequired()
 ```
+
+To copy the string to clipboard
+
+```kotlin
+   String.copyToClipBoard(context: Context)
+```
+
+To get the Spannable HTML Text
+
+```kotlin
+   String.getSpannableHtmlText()
+```
+
+To check the url is youtube url or not.
+
+```kotlin
+   String.isYoutubeUrl()
+```
+
+To get Random String.
+
+```kotlin
+   getRandomString()
+```
+
+To get Arraylist by splitting using new line .
+
+```kotlin
+   String.splitLines()
+```
+
 
 # UnitTypeUtility
 
@@ -565,6 +755,51 @@ To convert lbs to kg.
    lbsToKg(lbs: Float)
 ```
 
+To convert px to dp.
+
+```kotlin
+   pxToDp(px: Int)
+```
+
+To convert dp to px.
+
+```kotlin
+   dpToPx(dp: Int)
+```
+
+To convert sp to px.
+
+```kotlin
+   spToPx(sp: Int)
+```
+
+To convert px to sp.
+
+```kotlin
+   pxToSp(px: Int)
+```
+
+
+# ValidationUtils
+
+Here this is used to check whether the phone number is valid or not using MOBILE REGEX.
+
+```kotlin
+   String.isValidPhoneNumber() // This will return true or false based on given mobile number
+```
+
+Here this is used to check whether the email is valid or not using EMAIL REGEX.
+
+```kotlin
+   String.isValidEmail() // This will return true or false based on given email
+```
+Here this is used to check whether the password is strong or not.
+
+```kotlin
+   String.isValidStrongPassword() // This will return true or false based on given email
+```
+
+
 # ViewUtils
 
 To set view visibility .
@@ -577,4 +812,16 @@ To set view invisible.
 
 ```kotlin
    View.setInVisible()
+```
+
+To show keyboard of a view.
+
+```kotlin
+   View.showKeyboard(activity: AppCompatActivity)
+```
+
+To hide keyboaed of a view.
+
+```kotlin
+   View.hideKeyboard(activity: AppCompatActivity)
 ```
