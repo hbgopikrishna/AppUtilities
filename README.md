@@ -385,6 +385,7 @@ To check is it google photos.
 
   To Replaces existing fragment with a [Fragment], that gets instantiated from `clazz` with optional `fragmentBundle` attached.
 
+
 ```kotlin
     FragmentUtils.replace(
         activity: AppCompatActivity, // Hosting activity
@@ -717,7 +718,7 @@ To get Arraylist by splitting using new line .
 ```
 
 
-# UnitTypeUtility
+# UnitTypeUtilis
 
 To convert meter to foot.
 
